@@ -10,10 +10,24 @@ const personalMovieDB = {
     privat: false
 }
 
-let lastMovie1 = prompt("One of the last movies you saw?", "")
-let movieRate1 = prompt("How much do you rate it?", "")
-let lastMovie2 = prompt("One of the last movies you saw?", "")
-let movieRate2 = prompt("How much do you rate it?", "")
-personalMovieDB.movies[lastMovie1] = movieRate1;
-personalMovieDB.movies[lastMovie2] = movieRate2;
+for (let i = 0; i < 2; i++) {
+    let lastMovie, movieRate;
+    do {
+        lastMovie = prompt("One of the last movies you saw?", "");
+    } while (lastMovie.length === 0 || lastMovie.length > 50)
+    do {
+        movieRate = prompt("How much do you rate it?", "");
+    } while (movieRate.length === 0 || movieRate.length > 50)
+    personalMovieDB.movies[lastMovie] = movieRate;
+}
+
+if (numberOfFilms < 10) {
+    alert("watched quite a few movies");
+} else if (10 <= numberOfFilms < 30) {
+    alert("you are a classic viewer");
+} else if (numberOfFilms >= 30) {
+    alert("you are movie fan");
+} else {
+    alert("something wrong")
+}
 console.log(personalMovieDB)
